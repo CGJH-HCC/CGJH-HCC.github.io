@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¥i½s¿è­p¤ÀªO_¤À²ÕÄvÁÉ(±a­µ®Ä)</title>
+    <title>å¯ç·¨è¼¯è¨ˆåˆ†æ¿_åˆ†çµ„ç«¶è³½(å¸¶éŸ³æ•ˆ)</title>
     <style>
         html, body {
             height: 100%;
@@ -50,7 +50,7 @@
             align-items: center;
             padding: 20px;
             border-radius: 8px;
-            height: 250px; /* ©T©w°ª«× */
+            height: 250px; /* å›ºå®šé«˜åº¦ */
             box-sizing: border-box;
         }
         .team-name {
@@ -113,24 +113,24 @@
             .team-name { font-size: 20px; }
             .score { font-size: 36px; }
             button { font-size: 16px; }
-            .team { height: 220px; } /* ¸û¤pªº°ª«×¾AÀ³¤p«Ì¹õ */
+            .team { height: 220px; } /* è¼ƒå°çš„é«˜åº¦é©æ‡‰å°å±å¹• */
         }
     </style>
 </head>
 <body>
     <div class="scoreboard">
-        <h1 contenteditable="true">¤À²ÕÄvÁÉ­p¤ÀªO</h1>
+        <h1 contenteditable="true">åˆ†çµ„ç«¶è³½è¨ˆåˆ†æ¿</h1>
         <div id="teams-container" class="scores">
-            <!-- ¶¤¥î±N¥Ñ JavaScript °ÊºA²K¥[ -->
+            <!-- éšŠä¼å°‡ç”± JavaScript å‹•æ…‹æ·»åŠ  -->
         </div>
         <div class="control-buttons">
-            <button class="reset" onclick="resetScores()">­«¸m¤ñ¤À</button>
-            <button id="addTeam" onclick="addTeam()">²K¥[¶¤¥î</button>
-            <button id="removeTeam" onclick="removeTeam()">²¾°£¶¤¥î</button>
+            <button class="reset" onclick="resetScores()">é‡ç½®æ¯”åˆ†</button>
+            <button id="addTeam" onclick="addTeam()">æ·»åŠ éšŠä¼</button>
+            <button id="removeTeam" onclick="removeTeam()">ç§»é™¤éšŠä¼</button>
         </div>
     </div>
 
-    <!-- ­µ®Ä¤å¥ó -->
+    <!-- éŸ³æ•ˆæ–‡ä»¶ -->
     <audio id="scoreUpSound" src="https://taira-komori.jpn.org/sound_os2/game01/select01.mp3"></audio>
     <audio id="scoreDownSound" src="https://taira-komori.jpn.org/sound_os2/game01/blip01.mp3"></audio>
     <audio id="resetSound" src="https://taira-komori.jpn.org/sound_os2/game01/jump01.mp3"></audio>
@@ -145,7 +145,7 @@
 
         function playSound(sound) {
             sound.currentTime = 0;
-            sound.play().catch(e => console.log("­µ®Ä¼½©ñ¥¢±Ñ:", e));
+            sound.play().catch(e => console.log("éŸ³æ•ˆæ’­æ”¾å¤±æ•—:", e));
         }
 
         function updateScore(teamId, amount) {
@@ -170,7 +170,7 @@
 
         function addTeam() {
             if (teamCount >= 8) {
-                alert('³Ì¦h¥u¯à²K¥[ 8 ­Ó¶¤¥î');
+                alert('æœ€å¤šåªèƒ½æ·»åŠ  8 å€‹éšŠä¼');
                 return;
             }
             teamCount++;
@@ -178,7 +178,7 @@
             teamDiv.className = 'team';
             teamDiv.style.backgroundColor = colors[teamCount - 1];
             teamDiv.innerHTML = `
-                <div class="team-name" contenteditable="true">¶¤¥î ${teamCount}</div>
+                <div class="team-name" contenteditable="true">éšŠä¼ ${teamCount}</div>
                 <div class="score" id="score-${teamCount}">0</div>
                 <div class="buttons">
                     <button onclick="updateScore(${teamCount}, 1)">+1</button>
@@ -191,7 +191,7 @@
 
         function removeTeam() {
             if (teamCount <= 2) {
-                alert('¦Ü¤Ö»İ­n«O¯d 2 ­Ó¶¤¥î');
+                alert('è‡³å°‘éœ€è¦ä¿ç•™ 2 å€‹éšŠä¼');
                 return;
             }
             teamsContainer.removeChild(teamsContainer.lastChild);
@@ -201,13 +201,13 @@
         function addContentEditableListeners(element) {
             element.addEventListener('blur', function() {
                 if (this.textContent.trim() === '') {
-                    this.textContent = this.getAttribute('data-default') || '¶¤¥î¦WºÙ';
+                    this.textContent = this.getAttribute('data-default') || 'éšŠä¼åç¨±';
                 }
             });
             element.setAttribute('data-default', element.textContent);
         }
 
-        // ªì©l²K¥[¨â­Ó¶¤¥î
+        // åˆå§‹æ·»åŠ å…©å€‹éšŠä¼
         addTeam();
         addTeam();
     </script>
